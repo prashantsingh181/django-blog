@@ -219,6 +219,196 @@ a:hover {
   color: var(--muted);
 }
 
+/* ---------- forms ---------- */
+/* These styles target the markup Django's {{ form.as_p }} emits:
+   each field is wrapped in a <p> containing a <label> + an <input>,
+   with optional <span class="helptext"> and <ul class="errorlist">.
+   So we mostly style by element, not by class. */
+.form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.form legend {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  padding: 0;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+  width: 100%;
+  padding-bottom: 12px;
+}
+
+/* one field row (manual rendering: label, input, help, then error below) */
+.form-field {
+  margin: 0 0 16px;
+}
+.form p {
+  margin: 0 0 16px;
+}
+
+.form label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.form input,
+.form textarea,
+.form select {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  /* soft focus ring in the accent colour */
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+/* invalid fields — Django adds aria-invalid="true" to inputs with errors */
+.form input[aria-invalid="true"],
+.form textarea[aria-invalid="true"],
+.form select[aria-invalid="true"] {
+  border-color: #d92d20;
+}
+.form input[aria-invalid="true"]:focus,
+.form textarea[aria-invalid="true"]:focus,
+.form select[aria-invalid="true"]:focus {
+  border-color: #d92d20;
+  box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.15);
+}
+
+/* password-rule hints / field help text */
+.form .helptext {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.form .helptext ul {
+  margin: 4px 0 0;
+  padding-left: 18px;
+}
+
+/* validation errors rendered below each field (manual rendering) */
+.field-error {
+  display: block;
+  margin-top: 6px;
+  color: #b42318;
+  font-size: 0.82rem;
+}
+/* form-wide (non-field) errors block */
+.form-nonfield-errors {
+  margin-bottom: 16px;
+}
+.form-nonfield-errors .field-error {
+  margin-top: 0;
+}
+/* legacy as_p errorlist, kept for safety */
+.form .errorlist {
+  list-style: none;
+  margin: 0 0 6px;
+  padding: 0;
+  color: #b42318;
+  font-size: 0.82rem;
+}
+
+/* ---------- buttons (reusable across login, post create/edit, etc.) ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font);
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--accent);
+}
+.btn-primary:hover {
+  color: #fff;
+  background: var(--accent-hover);
+}
+
+.btn-outline {
+  color: var(--accent);
+  background: transparent;
+  border-color: var(--border);
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  background: var(--bg);
+}
+
+/* form footer (e.g. "Already have an account?") */
+.form-actions {
+  margin-top: 4px;
+}
+.form-footer {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+/* ---------- flash messages (Django messages framework) ---------- */
+/* class is "alert alert-{{ message.tags }}"; tags are success/info/warning/error/debug */
+.alert {
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-size: 0.92rem;
+}
+.alert-success {
+  color: #0a6b3b;
+  background: #e7f7ee;
+  border-color: #b6e8cd;
+}
+.alert-error,
+.alert-danger {
+  color: #b42318;
+  background: #fdecea;
+  border-color: #f6cfca;
+}
+.alert-warning {
+  color: #8a5a00;
+  background: #fdf4e3;
+  border-color: #f3e0b5;
+}
+.alert-info,
+.alert-debug {
+  color: #1d4ed8;
+  background: #eaf0ff;
+  border-color: #cdd9fb;
+}
+
 /* ---------- responsive: collapse to single column on small screens ---------- */
 @media (max-width: 768px) {
   .main-layout {
