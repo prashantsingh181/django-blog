@@ -122,6 +122,19 @@ a:hover {
   background: var(--accent-hover);
 }
 
+/* logout is a POST form (Django 5+ requires POST), but its button should
+   look exactly like a nav link, so we reset the button's native styling */
+.logout-form {
+  display: inline;
+  margin: 0;
+}
+.nav-link-button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 /* ---------- main two-column layout ---------- */
 .main-layout {
   display: grid;

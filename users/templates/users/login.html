@@ -1,10 +1,10 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-  <div class="content-section">
+<div class="content-section">
     <form method="POST" class="form" novalidate>
       {% csrf_token %}
       <fieldset>
-        <legend>Join Today</legend>
+        <legend>Sign In to your account</legend>
 
         {% if form.non_field_errors %}
           <div class="form-nonfield-errors">
@@ -29,13 +29,13 @@
       </fieldset>
 
       <div class="form-actions">
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <button type="submit" class="btn btn-primary">Sign In</button>
       </div>
     </form>
 
     <div class="form-footer">
-      <small class="text-muted">Already have an account?</small>
-      <a href="{% url 'login' %}">Sign In</a>
+      <small class="text-muted">Don't have an account?</small>
+      <a href="{% url 'register' %}">Create account</a>
     </div>
   </div>
 {% endblock %}
