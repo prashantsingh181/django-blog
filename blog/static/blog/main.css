@@ -179,7 +179,20 @@ a:hover {
   margin-bottom: 4px;
 }
 .post-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 600;
+  color: var(--ink);
+}
+.post-author:hover {
+  color: var(--accent);
+}
+.post-author img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover; /* crop non-square images into the circle cleanly */
 }
 .post-date {
   color: var(--muted);
@@ -200,6 +213,39 @@ a:hover {
 .post-content {
   margin: 0;
   color: var(--text);
+}
+
+/* ---------- profile page header ---------- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.profile-name {
+  margin: 0 0 4px;
+  color: var(--ink);
+  font-size: 1.5rem;
+}
+.profile-info p {
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
 /* ---------- sidebar ---------- */

@@ -3,7 +3,7 @@
   {% for post in posts %}
     <article class="post-card">
       <div class="post-meta">
-        <a class="post-author" href="#">{{ post.author }}</a>
+        <a class="post-author" href="#"><img src="{{post.author.profile.image.url}}" alt="Profile pic of {{post.author}}"/><span>{{ post.author }}</span></a>
         <span class="post-date">{{ post.date_posted|date:"F d, Y" }}</span>
       </div>
       <h2 class="post-title"><a href="#">{{ post.title }}</a></h2>
