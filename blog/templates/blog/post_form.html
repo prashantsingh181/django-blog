@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <form method="POST" class="form" novalidate>
+      {% csrf_token %}
+      <fieldset>
+        <legend>Blog Post</legend>
+
+        {% if form.non_field_errors %}
+          <div class="form-nonfield-errors">
+            {% for error in form.non_field_errors %}
+              <span class="field-error">{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% for field in form %}
+          <div class="form-field">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.help_text %}
+              <small class="helptext">{{ field.help_text|safe }}</small>
+            {% endif %}
+            {% for error in field.errors %}
+              <span class="field-error">{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </form>
+{% endblock %}

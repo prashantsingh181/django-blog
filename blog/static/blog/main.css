@@ -425,6 +425,36 @@ a:hover {
   background: var(--bg);
 }
 
+.btn-danger {
+  color: #fff;
+  background: #d92d20;
+}
+.btn-danger:hover {
+  color: #fff;
+  background: #b42318;
+}
+
+/* smaller buttons, e.g. inline post actions */
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+/* Update / Delete action row on the post detail page */
+.post-actions {
+  display: flex;
+  gap: 8px;
+  margin: 2px 0 14px;
+  align-items: center;
+}
+
+/* delete-confirmation prompt */
+.confirm-text {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
 /* form footer (e.g. "Already have an account?") */
 .form-actions {
   margin-top: 4px;

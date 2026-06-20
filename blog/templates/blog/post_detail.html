@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <article class="post-card">
+      <div class="post-meta">
+        <a class="post-author" href="#"><img src="{{ post.author.profile.image.url }}" alt="Profile pic of {{ post.author }}" /><span>{{ post.author }}</span></a>
+        <span class="post-date">{{ post.date_posted|date:"F d, Y" }}</span>
+      </div>
+      <h2 class="post-title">{{ post.title }}</h2>
+      <p class="post-content">{{ post.content }}</p>
+
+      {% if post.author == user %}
+        <div class="post-actions">
+          <a class="btn btn-outline btn-sm" href="{% url 'blog:update' post.pk %}">Update</a>
+          <a class="btn btn-danger btn-sm" href="{% url 'blog:delete' post.pk %}">Delete</a>
+        </div>
+      {% endif %}
+    </article>
+{% endblock %}

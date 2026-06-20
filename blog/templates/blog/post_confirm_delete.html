@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+  <div class="content-section">
+    <form method="POST" class="form" novalidate>
+      {% csrf_token %}
+      <fieldset>
+        <legend>Delete Post</legend>
+        <p class="confirm-text">Are you sure you want to delete the post "<strong>{{ object.title }}</strong>"?</p>
+      </fieldset>
+
+      <div class="post-actions">
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a class="btn btn-outline" href="{% url 'blog:detail' object.pk %}">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}
