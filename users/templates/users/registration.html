@@ -6,26 +6,8 @@
       <fieldset>
         <legend>Join Today</legend>
 
-        {% if form.non_field_errors %}
-          <div class="form-nonfield-errors">
-            {% for error in form.non_field_errors %}
-              <span class="field-error">{{ error }}</span>
-            {% endfor %}
-          </div>
-        {% endif %}
-
-        {% for field in form %}
-          <div class="form-field">
-            {{ field.label_tag }}
-            {{ field }}
-            {% if field.help_text %}
-              <small class="helptext">{{ field.help_text|safe }}</small>
-            {% endif %}
-            {% for error in field.errors %}
-              <span class="field-error">{{ error }}</span>
-            {% endfor %}
-          </div>
-        {% endfor %}
+        {% include 'blog/_form.html' %}
+        
       </fieldset>
 
       <div class="form-actions">

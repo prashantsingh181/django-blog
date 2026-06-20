@@ -1,0 +1,20 @@
+{% comment %} 
+    Common Post Card Component 
+{% endcomment %}
+<article class="post-card">
+  <div class="post-meta">
+    <a
+      class="post-author"
+      href="{% url 'blog:user-posts' post.author.username %}"
+      ><img
+        src="{{post.author.profile.image.url}}"
+        alt="Profile pic of {{post.author}}"
+      /><span>{{ post.author }}</span></a
+    >
+    <span class="post-date">{{ post.date_posted|date:"F d, Y" }}</span>
+  </div>
+  <h2 class="post-title">
+    <a href="{% url 'blog:detail' post.id %}">{{ post.title }}</a>
+  </h2>
+  <p class="post-content">{{ post.content }}</p>
+</article>
