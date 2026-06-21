@@ -16,8 +16,8 @@
     </form>
 
     <div class="form-footer">
-      <small class="text-muted">Don't have an account?</small>
-      <a href="{% url 'register' %}">Create account</a>
+      <p><small class="text-muted">Don't have an account?</small> <a href="{% url 'register' %}">Create account</a></p>
+      <p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
     </div>
   </div>
 {% endblock %}
